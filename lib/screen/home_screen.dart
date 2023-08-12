@@ -45,10 +45,11 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-        "name".tr(),
-        style: const TextStyle(color: Colors.white),
-      )),
+        title: Text(
+          "name".tr(),
+          style: const TextStyle(color: Colors.white),
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () async {
           context.setLocale(const Locale("uz"));
