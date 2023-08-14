@@ -1,3 +1,4 @@
+import 'package:book_app_api/di/di.dart';
 import 'package:book_app_api/resources/themes.dart';
 import 'package:book_app_api/screen/splash_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -6,6 +7,7 @@ import 'package:flutter/material.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
+  diSetup();
   runApp(
     EasyLocalization(
       supportedLocales: const [

@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../data/models/book_model.dart';
-import '../data/source/remote/api/book_api.dart';
+import '../di/di.dart';
+import '../domain/repository/repository_impl.dart';
 
 class DetailScreen extends StatefulWidget {
   final String id;
@@ -20,7 +21,7 @@ class DetailScreen extends StatefulWidget {
 enum Status { initial, loading, fail, success }
 
 class _DetailScreenState extends State<DetailScreen> {
-  final api = BookApi();
+  final api = di.get<RepositoryImpl>();
   var details = BookModel.empty();
   var status = Status.initial;
   var path = "";

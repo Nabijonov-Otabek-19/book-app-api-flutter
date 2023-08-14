@@ -1,13 +1,13 @@
 import 'package:dio/dio.dart';
-import '../../../models/book_model.dart';
+import '../../../../domain/repository/repository.dart';
+import '../../data/models/book_model.dart';
 
-class BookApi {
+class RepositoryImpl implements Repository {
+  final Dio _dio;
 
-  final _dio = Dio(BaseOptions(
-    baseUrl: "https://run.mocky.io/v3/",
-    validateStatus: (status) => true,
-  ));
+  RepositoryImpl(this._dio);
 
+  @override
   Future<List<BookModel>> getList() async {
     final response = await _dio.get("5c9ffd1e-671c-4a53-8fb4-2139d9f77ac2");
 
@@ -16,6 +16,7 @@ class BookApi {
         .toList();
   }
 
+  @override
   Future<BookModel> getDetails(String id) async {
     final response = await _dio.get(id);
     return BookModel.fromJson(response.data);

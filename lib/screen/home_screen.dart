@@ -2,7 +2,8 @@ import 'package:book_app_api/screen/details_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import '../data/models/book_model.dart';
-import '../data/source/remote/api/book_api.dart';
+import '../di/di.dart';
+import '../domain/repository/repository.dart';
 import '../widgets/widget_book_item.dart';
 import '../widgets/widget_fail.dart';
 import '../widgets/widget_shimmer.dart';
@@ -17,7 +18,7 @@ class HomeScreen extends StatefulWidget {
 enum Status { initial, loading, fail, success }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final api = BookApi();
+  final api = di.get<Repository>();
   final controller = PageController();
   var list = <BookModel>[];
   var status = Status.initial;
