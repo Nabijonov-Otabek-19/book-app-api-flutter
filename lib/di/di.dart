@@ -8,11 +8,16 @@ import '../data/source/remote/api/base_api.dart';
 GetIt di = GetIt.instance;
 
 void diSetup() {
+  // BaseApi
   di.registerLazySingleton<BaseApi>(() => BaseApi());
 
-  di.registerLazySingleton<RepositoryImpl>(() => RepositoryImpl(di.get<BaseApi>().dio));
+  // RepositoryImpl
+  di.registerLazySingleton<RepositoryImpl>(
+      () => RepositoryImpl(di.get<BaseApi>().dio));
 
+  // Interface to Impl
   di.registerSingleton<Repository>(RepositoryImpl(di.get<BaseApi>().dio));
 
+  // SharedPref
   di.registerLazySingleton<BookPRef>(() => BookPRef());
 }

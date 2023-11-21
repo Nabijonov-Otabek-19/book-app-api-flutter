@@ -29,7 +29,5 @@ class BookModel {
     );
   }
 
-  factory BookModel.empty() {
-    return BookModel.fromJson({});
-  }
+  factory BookModel.empty() => BookModel.fromJson({});
 }
